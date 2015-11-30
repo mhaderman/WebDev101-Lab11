@@ -1,0 +1,18 @@
+<% include ../partials/header.ejs %>
+
+<h1>Add Address for <%= account_info.firstname %> <%= account_info.lastname %></h1>
+<form action="./save_new_address" class="col-md-4">
+    <select id="address_id" name="address_id" class="form-control">
+        <% addressResults.forEach(function(entry) { %>
+        <% var address = entry.street + " " + entry.city + ", " + entry.state_abbr + " " + entry.zip %>
+
+        <option value="<%= entry.address_id %>"><%= address %></option>
+        <% }); %>
+    </select>
+
+    <input type="hidden" name="account_id" id="account_id" value="<%= account_info.account_id %>" />
+
+    <br />
+    <input type="submit" class="btn btn-primary" />
+</form>
+<% include ../partials/footer.ejs %>

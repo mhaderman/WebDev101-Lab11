@@ -1,0 +1,19 @@
+<% include ../partials/header %>
+    <%= title %>
+    <form action="view/">
+        <select id="address_id" name="address_id">
+            <option></option>
+            <% rs.forEach(function(entry) {
+                var address = entry.street + " " + entry.city + ", " + entry.state_abbr + " " + entry.zip
+            %>
+
+            <option value="<%= entry.address_id %>">
+                <%= address %>
+            </option>
+
+            <% }); %>
+        </select>
+
+        <input type="submit" />
+    </form>
+<% include ../partials/footer %>

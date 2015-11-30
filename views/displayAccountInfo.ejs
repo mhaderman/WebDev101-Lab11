@@ -1,0 +1,20 @@
+<% if(rs.length > 0) { %>
+<h1>User Account Info</h1>
+    Name: <%= rs[0].firstname %> <%= rs[0].lastname %><br />
+    Email: <%= rs[0].email %>
+
+    <% if(addressResults.length > 0) { %>
+<h1>User Account Addresses</h1>
+    <table border="1">
+        <tr><th>Street</th><th>City</th><th>State</th><th>Zip</th></tr>
+        <% addressResults.forEach(function(entry) { %>
+            <td><%= entry.street %></td><td><%= entry.city %></td><td><%= entry.state_abbr %></td><td><%= entry.zip %></td>
+        <%}); // end forEach %>
+    </table>
+
+    <a href="/account/new_address?account_id=<%= account_id %>&firstname=<%= rs[0].firstname %>&lastname=<%= rs[0].lastname %>">Associate Account with another Address</a>
+    <% } %>
+
+<% } else { %>
+    No account matched this account id <%= account_id %>.
+<% } %>

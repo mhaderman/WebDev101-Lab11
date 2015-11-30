@@ -1,0 +1,25 @@
+<% include ../partials/header.ejs %>
+
+<% if(typeof company !== 'undefined' && company.length == 1) { %>
+    <ul>
+        <li>Name: <%= company[0].name %></li>
+        <li>Address: <% address.forEach(function(entry) {
+
+                        if(entry.address_id == company[0].address_id) {
+                            var address = entry.street + " " + entry.city + ", " + entry.state_abbr + " " + entry.zip;
+                      %>
+
+                          <%= address %>
+
+                          <% } // end if
+                      }); // end forEach
+                      %>
+        </li>
+    </ul>
+
+    <br />
+
+    <a href="/company/edit/?<%= company[0].company_id %>">Edit</a>
+
+<% } %>
+<% include ../partials/footer.ejs %>

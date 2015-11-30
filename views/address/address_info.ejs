@@ -1,0 +1,13 @@
+<% include ../partials/header.ejs %>
+<% console.log(rs.length) %>
+<% if(rs.length == 1) { %>
+    <ul>
+        <li>Street: <%= rs[0].street %></li>
+        <li>City: <%= rs[0].city %></li>
+        <li>State: <%= rs[0].state_abbr %></li>
+        <li>Zip: <%= rs[0].zip %></li>
+    </ul>
+<a href="../edit?address_id=<%= rs[0].address_id %>">Edit</a>
+<% }%>
+<br />
+<% include ../partials/footer.ejs %>
